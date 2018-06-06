@@ -1,0 +1,3 @@
+profile.jpg
+capstone_2017_2018_resized.png
+capstone_2016_2017.jpg
