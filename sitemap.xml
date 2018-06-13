@@ -9,17 +9,22 @@
 
 <url>
   <loc>https://prashnani.github.io/</loc>
-  <lastmod>2018-06-12T04:16:36+00:00</lastmod>
+  <lastmod>2018-06-13T04:47:40+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://prashnani.github.io/public/Ekta_Prashnani_resume.pdf</loc>
+  <lastmod>2018-06-13T04:47:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://prashnani.github.io/public/Prashnani_PieAPP_Perceptual_Image-Error_CVPR_2018_paper.pdf</loc>
-  <lastmod>2018-06-12T04:16:36+00:00</lastmod>
+  <lastmod>2018-06-13T04:47:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://prashnani.github.io/public/Prashnani_PieAPP_Perceptual_Image-Error_CVPR_2018_supp.pdf</loc>
-  <lastmod>2018-06-12T04:16:37+00:00</lastmod>
+  <lastmod>2018-06-13T04:47:40+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
