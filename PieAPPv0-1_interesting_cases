@@ -1,0 +1,218 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">	 
+  	<meta name="description" content="perceptual error cases">
+  	<meta name="keywords" content="perceptual error cases">
+  	<meta name="author" content="Ekta Prashnani">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<title>PieAPPv0.1 cases </title>
+	<style type="text/css"></style>
+</head>
+
+<body>
+	
+	<table border="0" width="750px" align="center">
+	<tbody><tr><td valign="center">
+		<center> <font style="font-size: 16pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+		<b>PieAPPv0.1 cases where humans and PieAPPv0.1 agree but all other metrics are wrong </b></font></center>
+        </td></tr>
+		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+		<tr><td valign="center">
+		<center> <font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+		Image A is voted as closer to reference image as compared to Image B by the following metrics:
+		MAE/L1, RMSE/L2, SSIM, MS-SSIM, GMSD, VSI, PSNR-HMA, FSIMc, SFF,  SCQI, DOG-SSIMc, 
+		Lukin et al., Kim et al. (CVPR2017), Bosse et al. NR and FR (TIP2018)</font></center>
+        </td></tr>
+		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+		<tr><td valign="center">
+		<center> <font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+		Image B is voted as closer to reference image by humans and PieAPPv0.1.</font></center>
+        </td></tr>
+		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+		<tr>
+			<table border="0" width="750px" align="center"><tbody>
+			<tr>
+			<td> 
+			<center><font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+			Image A</font></center></td>
+			<td><center> <font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+			Reference</font></center></td>
+			<td> <center><font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" >
+			Image B</font></center></td></font></tr>
+			
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_1_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_1_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_1_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_3_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_3_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_3_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_1_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_1_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_1_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_2_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_2_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_mc_denoising_256size_2_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_2_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_2_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_2_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>	
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_1000_old_test_256size_2_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_1000_old_test_256size_2_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_1000_old_test_256size_2_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_4_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_4_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_400_old_test_256size_4_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_600_old_test_256size_1_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_600_old_test_256size_1_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_600_old_test_256size_1_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>	
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_3_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_3_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_3_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>	
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_4_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_4_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_1000_old_test_256size_4_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>	
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_2_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_2_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_2_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>	
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_3_A.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_3_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/B_better_mc_denoising_256size_3_B.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>		
+
+			<tr>			
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_2_B.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_2_Ref.png" border="0" ></center>
+			</td>
+			<td valign="center">
+			<center><img width="200" src="index_files/marketing_cases/A_better_600_old_test_256size_2_A.png" border="0" ></center>
+			</td>			
+			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>				
+
+			</tbody></table>
+		</tr>
+      
+            
+</font></tbody></table><iframe frameborder="0" scrolling="no" style="border: 0px; display: none; background-color: transparent;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="null" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:false,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
+
