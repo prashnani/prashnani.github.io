@@ -1,238 +1,1099 @@
-<html>
-<!-- PLEASE CREDIT https://prashnani.github.io if using this template. See the end of this document to for more information. -->
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  PLEASE CREDIT https://prashnani.github.io if using this template.
+  PWA: manifest.json + sw.js — see HOSTING_AND_APP.md for private repo + native app path.
+-->
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">	 
-  	<meta name="description" content="Ekta Prashnani Homepage">
-  	<meta name="keywords" content="Ekta Prashnani">
-  	<meta name="author" content="Ekta Prashnani">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<title>Ekta Prashnani Homepage </title>
-	<style type="text/css"></style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Ekta Prashnani — Senior Research Scientist, NVIDIA Research">
+  <meta name="keywords" content="Ekta Prashnani, computer vision, deepfakes, perceptual quality">
+  <meta name="author" content="Ekta Prashnani">
+  <meta name="theme-color" content="#f7f7f8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Ekta Prashnani</title>
+  <link rel="canonical" href="https://prashnani.github.io/">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="indexfiles/profile.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ChatGPT / Perplexity-style neutrals */
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #0d0d0d;
+      --muted: #6e6e6e;
+      --faint: #a1a1a1;
+      --border: #e8e8e8;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+      --link: #0a0a0a;
+      --link-visited: #737373;
+      --link-hover: #333333;
+      --link-visited-hover: #525252;
+      --radius: 12px;
+      --max: 44rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overflow-x: clip;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-wrap: break-word;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0.06);
+    }
+
+    a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color 0.12s ease;
+      touch-action: manipulation;
+    }
+
+    a:link {
+      color: var(--link);
+    }
+
+    a:visited {
+      color: var(--link-visited);
+    }
+
+    a:link:hover,
+    a:link:focus-visible {
+      color: var(--link-hover);
+    }
+
+    a:visited:hover,
+    a:visited:focus-visible {
+      color: var(--link-visited-hover);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-top: max(2rem, env(safe-area-inset-top, 0px));
+      padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+      padding-bottom: max(4rem, calc(2rem + env(safe-area-inset-bottom, 0px)));
+      padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    }
+
+    header.hero {
+      display: grid;
+      gap: 1.75rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+      header.hero {
+        grid-template-columns: auto 1fr;
+        gap: 2.25rem;
+      }
+    }
+
+    .hero-photo {
+      margin: 0 auto;
+      width: min(220px, 70vw);
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .hero-photo { margin: 0; }
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Tighter zoom, anchor on face (upper-center of frame) */
+      object-position: 50% 22%;
+      transform: scale(1.38);
+      transform-origin: 50% 26%;
+    }
+
+    .hero-text h1 {
+      font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      line-height: 1.12;
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .hero-text .role {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    section {
+      margin-bottom: 2.75rem;
+    }
+
+    section h2 {
+      font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.65rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .bio {
+      margin: 0;
+      padding: 0;
+    }
+
+    .bio p { margin: 0 0 1rem; }
+    .bio p:last-child { margin-bottom: 0; }
+
+    section.news {
+      margin-bottom: 2rem;
+    }
+
+    section.news h2 {
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .news-scroll-wrap {
+      position: relative;
+      margin-top: 0.15rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .news-scroll {
+      max-height: min(45vh, 20rem);
+      overflow-x: hidden;
+      overflow-y: hidden;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    /* Reserve space for the bottom overlay control (same spot expand / contract) */
+    .news-scroll.news-scroll--clipped,
+    .news-scroll-wrap--expanded .news-scroll {
+      padding-bottom: 2.6rem;
+    }
+
+    .news-scroll-wrap--expanded .news-scroll {
+      max-height: none;
+      overflow-y: visible;
+    }
+
+    .news-scroll:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
+    .news-scroll-toggle {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2.75rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0 0 0.35rem;
+      margin: 0;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+      border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
+      background: linear-gradient(to top, var(--surface) 28%, transparent);
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+
+    .news-scroll-toggle:hover .news-scroll-toggle-icon,
+    .news-scroll-toggle:focus-visible .news-scroll-toggle-icon {
+      color: var(--text);
+    }
+
+    .news-scroll-toggle:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: -2px;
+      z-index: 1;
+    }
+
+    .news-scroll-toggle[hidden] {
+      display: none;
+    }
+
+    .news-scroll-toggle-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      color: var(--muted);
+      font-size: 1.2rem;
+      line-height: 1;
+      transform: rotate(90deg);
+      transition: transform 0.2s ease, color 0.15s ease;
+    }
+
+    .news-scroll-wrap--expanded .news-scroll-toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .news-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .news-list li {
+      display: grid;
+      grid-template-columns: 6.25rem 1fr;
+      gap: 0.4rem 0.85rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 520px) {
+      .news-list li {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+      }
+    }
+
+    .news-list li:last-child { border-bottom: none; }
+
+    .news-list time {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.45;
+    }
+
+    details.pub {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    details.pub:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .pub-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 4.25rem) minmax(0, 1fr) auto;
+      align-items: start;
+      column-gap: 1rem;
+      padding: 1.05rem 1.35rem;
+      list-style: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: grid-template-columns 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+        column-gap 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    details.pub[open] .pub-summary {
+      grid-template-columns: minmax(0, 0px) minmax(0, 1fr) auto;
+      column-gap: 0;
+    }
+
+    .pub-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pub-thumb-wrap {
+      width: 100%;
+      height: 4.25rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--border);
+      min-width: 0;
+    }
+
+    details.pub[open] .pub-summary-main h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .pub-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .pub-thumb.pub-thumb--left-top {
+      object-position: left top;
+    }
+
+    .pub-thumb.pub-thumb--right-top {
+      object-position: right top;
+    }
+
+    .pub-thumb.pub-thumb--right-most {
+      object-position: 88% 50%;
+    }
+
+    .pub-thumb.pub-thumb--far-right {
+      object-position: right center;
+    }
+
+    .pub-thumb-wrap--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pub-thumb-wrap--placeholder::after {
+      content: "◇";
+      font-size: 0.9rem;
+      color: var(--faint);
+      line-height: 1;
+    }
+
+    .pub-summary-main {
+      min-width: 0;
+      text-align: left;
+    }
+
+    .pub-summary-main h3 {
+      font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      margin: 0 0 0.3rem;
+      color: var(--text);
+      transition: font-size 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+        line-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-bottom 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pub-summary-main .venue {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .pub-chevron {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1.35rem;
+      font-weight: 500;
+      line-height: 1;
+      margin-left: 0;
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    details.pub[open] .pub-chevron {
+      transform: rotate(90deg);
+      margin-left: 1rem;
+    }
+
+    .pub-body {
+      padding: 0 1.35rem 1.35rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pub-body .authors {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 1rem 0 0.75rem;
+    }
+
+    .pub-body .authors strong {
+      font-weight: 600;
+    }
+
+    .pub-body .abstract {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 0 0 1rem;
+    }
+
+    .pub-body figure {
+      margin: 1.15rem 0 0;
+      text-align: center;
+    }
+
+    .pub-body figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .pub-body figure img.pub-teaser--narrow {
+      width: min(100%, 26rem);
+      max-width: 100%;
+      height: auto;
+      margin-inline: auto;
+    }
+
+    .pub-body figure img.pub-teaser--narrow.pub-teaser--cipher {
+      width: min(100%, 14rem);
+    }
+
+    .pub-body .coming {
+      margin: 0.75rem 0 0;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      min-height: 2.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: color 0.12s ease, background 0.12s ease;
+      overflow-wrap: anywhere;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .links a:link {
+      color: var(--link);
+      background: rgba(0, 0, 0, 0.055);
+    }
+
+    .links a:visited {
+      color: var(--link-visited);
+      background: rgba(0, 0, 0, 0.035);
+    }
+
+    .links a:link:hover,
+    .links a:link:focus-visible {
+      color: var(--link-hover);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .links a:visited:hover,
+    .links a:visited:focus-visible {
+      color: var(--link-visited-hover);
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .coming {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .footnote {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0.2rem 0 0.5rem;
+      line-height: 1.4;
+    }
+
+    footer.site-footer {
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer.site-footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer.site-footer .copyright {
+      font-size: 0.8rem;
+      color: var(--faint);
+      margin: 0 0 0.65rem;
+    }
+
+    footer.site-footer .credit {
+      font-size: 0.8rem;
+      color: var(--faint);
+      margin: 0;
+    }
+
+    footer.site-footer .credit a:link,
+    footer.site-footer .credit a:visited {
+      color: var(--faint);
+    }
+
+    footer.site-footer .credit a:hover,
+    footer.site-footer .credit a:focus-visible {
+      color: var(--muted);
+    }
+
+    @media (max-width: 639px) {
+      .wrap {
+        padding-top: max(1.5rem, env(safe-area-inset-top, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-bottom: max(3rem, calc(1.5rem + env(safe-area-inset-bottom, 0px)));
+      }
+
+      header.hero {
+        gap: 1.25rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .hero-text {
+        text-align: center;
+        min-width: 0;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(1.85rem, 9vw, 2.65rem);
+      }
+
+      .hero-photo {
+        width: min(200px, 72vw);
+        margin-inline: auto;
+      }
+
+      section h2 {
+        font-size: clamp(1.35rem, 5.5vw, 1.65rem);
+        margin-bottom: 0.85rem;
+      }
+
+      .pub-summary {
+        padding: 0.85rem 0.95rem;
+        grid-template-columns: minmax(0, 3.5rem) minmax(0, 1fr) auto;
+        column-gap: 0.65rem;
+      }
+
+      details.pub[open] .pub-chevron {
+        margin-left: 0.65rem;
+      }
+
+      details.pub[open] .pub-summary-main h3 {
+        font-size: 1.12rem;
+      }
+
+      .pub-thumb-wrap {
+        height: 3.5rem;
+      }
+
+      .pub-summary-main h3 {
+        font-size: 0.98rem;
+        hyphens: auto;
+        word-break: break-word;
+      }
+
+      .pub-summary-main .venue,
+      .pub-body .authors,
+      .pub-body .abstract {
+        font-size: 0.88rem;
+      }
+
+      .pub-body {
+        padding: 0 0.95rem 1.1rem;
+      }
+
+      .links {
+        gap: 0.45rem;
+      }
+
+      .links a {
+        min-height: 2.75rem;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.875rem;
+      }
+
+      .news-list {
+        font-size: 0.95rem;
+      }
+
+      .news-list li span {
+        min-width: 0;
+      }
+
+      footer.site-footer nav {
+        gap: 0.25rem 0.5rem;
+        row-gap: 0.35rem;
+      }
+
+      footer.site-footer nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        padding: 0.5rem 0.65rem;
+        touch-action: manipulation;
+      }
+    }
+  </style>
 </head>
-
 <body>
-	<table border="0" width="45%" align="center" style="max-width:100%">
-	<tbody><tr><td></td><td valign="top">
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-photo">
+        <img src="indexfiles/profile.jpg" width="220" height="220" alt="Ekta Prashnani" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-text">
+        <h1>Ekta Prashnani</h1>
+        <p class="role">Senior Research Scientist · NVIDIA Research</p>
+      </div>
+    </header>
 
-        <br>
-        <table style="font-size: 13pt;" border="0" width="100%" bgcolor="F5F5F5">
-            <tbody><tr>
-                <td width="50%" align="center">                    
-                    <img width="200" src="indexfiles/profile.png" border="5%" style="border-color:transparent" >
-                </td>
-                <td align="left">
-                    <font face= "Century Gothic, CenturyGothic, AppleGothic, sans-serif" size="6"> 
-                        Ekta Prashnani<br>
-                    </font>
-                    <font face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" size="4"> 
-                        Research Scientist <br>
-                        NVIDIA<br>                        
-                        <!-- [<a href="https://github.com/prashnani" border="0" style="color:528B8B">GitHub</a>]
-                        [<a href="https://scholar.google.com/citations?user=na-Ba1EAAAAJ&hl=en" border="0" style="color:528B8B">Google Scholar</a>]
-						[<a href="https://prashnani.github.io/indexfiles/Ekta_Prashnani_CV_NOV2022.pdf" border="0" style="color:528B8B">CV</a>]<br> -->
-                    </font>
-                </td>
-            </tr>
-        </tbody></table> 
-        <br>
+    <section class="intro" aria-label="Introduction">
+      <div class="bio">
         <p>
-       
-        <font style="font-size: 13pt;" face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" style="color:528B8B" target="_blank">
-		I am a Research Scientist at NVIDIA Research, working on verifying trustworthy use of synthetic content (see <a href="https://youtu.be/mjuQqwDOyQE">Avatar Fingerprinting</a> for verifying the authorized use of synthetic talking-head videos at ECCV'24) and on multi-modal foundation models.
-		
-		<br>
+          I work on algorithms for verifying trustworthiness of AI-generated content, multimodal machine learning, and computational genomics.
+        </p>
+        <p>
+          Some of my recent notable research outcomes include <a href="https://arxiv.org/abs/2305.03713">avatar fingerprinting</a> for authorized use of synthetic avatars, <a href="https://arxiv.org/abs/2211.09363">phase-based deepfake detection</a>, and collaborative efforts on <a href="https://grip-unina.github.io/WaveRep-SyntheticVideoDetection/">synthetic video detection</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12363937/">computational genomics</a>.
+          During my Ph.D. at UC Santa Barbara, I worked on data-driven methods for evaluating the perceptual quality and authenticity of visual media.
+        </p>
+      </div>
+    </section>
 
-		Some past notable works include <a href="https://arxiv.org/abs/2211.09363">PhaseForenics</a>, a generalizable, phase-based deepfake detector; <a href="https://arxiv.org/abs/1806.02067" style="color:528B8B" target="_blank">PieAPP</a> a perceptually-consistent image error assessment method and accompanying dataset; and 
-		a <a href="https://arxiv.org/abs/2104.08038" style="color:528B8B" target="_blank">noise-aware training</a> approach for video saliency.
-		<br>
-		<br>		
-		</font>
+    <section class="news" aria-labelledby="news-heading">
+      <h2 id="news-heading">Updates</h2>
+      <div class="news-scroll-wrap">
+      <div class="news-scroll" id="news-scroll-panel" tabindex="0" role="region" aria-label="News entries">
+      <ul class="news-list">
+        <li><time datetime="2025-12">Dec 2025</time><span>Two papers at NeurIPS 2025 with NVIDIA colleagues and academic collaborators: <a href="https://arxiv.org/abs/2506.16802">Seeing What Matters</a> (generalizable AI-video detection) and <a href="https://arxiv.org/abs/2510.03548">Unmasking Puppeteers</a> (against puppeteering in AI videoconferencing).</span></li>
+        <li><time datetime="2025-08">Aug 2025</time><span>Preprint <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12363937/">&ldquo;Fluctuation structure predicts genome-wide perturbation outcomes&rdquo;</a> (CIPHER) on Research Square, with <a href="https://www.goyallab.org/team">the Goyal Lab</a> at Northwestern University (<a href="https://github.com/GoyalLab/CIPHER">code</a>).</span></li>
+        <li><time datetime="2024-07">Jul 2024</time><span><a href="https://research.nvidia.com/labs/nxp/avatar-fingerprinting/">Avatar Fingerprinting</a> accepted at ECCV (<a href="https://youtu.be/mjuQqwDOyQE">video</a>). Also checkout the NVFAIR benchmark dataset <a href="https://research.nvidia.com/labs/nxp/nvfair/">here</a>.</span></li>
+        <li><time datetime="2024-06">Jun 2024</time><span><a href="https://ieeexplore.ieee.org/document/10685029/">PhaseForensics</a> (a frequency-based generalizable deepfake detector) accepted at <em>IEEE Transactions on Image Processing</em>.</span></li>
+        <li><time datetime="2023-09">Sep 2023</time><span>Avatar Fingerprinting -- the pioneering work on verifying authorized use of synthetic talking-head videos -- is now available on <a href="https://arxiv.org/abs/2305.03713">arXiv</a>.</span></li>
+        <li><time datetime="2022-04">Apr 2022</time><span>Joined NVIDIA Research (Human Performance and Experience) as a Research Scientist.</span></li>
+        <li><time datetime="2022-03">Mar 2022</time><span>Graduated with my Ph.D. in Electrical &amp; Computer Engineering at UC Santa Barbara, where my research focus was on computer vision for media quality and authenticity. Dissertation: <em>Data-driven Methods for Evaluating the Perceptual Quality and Authenticity of Visual Media</em>.</span></li>
+      </ul>
+      </div>
+      <button type="button" class="news-scroll-toggle" id="news-scroll-toggle" hidden aria-expanded="false" aria-controls="news-scroll-panel">
+        <span class="news-scroll-toggle-icon" aria-hidden="true">›</span>
+      </button>
+      </div>
+    </section>
 
-        </p><hr size="1" align="left" color="c3c3c3">     		
-		<font face= "Century Gothic, CenturyGothic, AppleGothic, sans-serif" style="font-size: 22pt;"> News
-        <table style="font-size: 13pt;" border="0" width="100%" font size="3">
+    <section class="publications" aria-labelledby="pubs-heading">
+      <h2 id="pubs-heading">Publications</h2>
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb pub-thumb--right-most" src="indexfiles/SynVidDet-intro.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Seeing What Matters: Generalizable AI-generated Video Detection with Forensic-Oriented Augmentation</h3>
+            <p class="venue">Advances in Neural Information Processing Systems, 2025</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors">Riccardo Corvi, Davide Cozzolino, <strong>Ekta Prashnani</strong>, Shalini De Mello, Koki Nagano, Luisa Verdoliva</p>
+          <p class="abstract">This work improves the generalization of synthetic video detectors by training them to focus on intrinsic low-level artifacts shared across generative models, rather than model-specific semantic flaws. Using a forensic-oriented augmentation strategy based on wavelet decomposition, the method achieves strong cross-model detection performance even when trained on videos from only a single generator.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2506.16802">Paper</a>
+            <a href="https://grip-unina.github.io/WaveRep-SyntheticVideoDetection/">Project page</a>
+            <a href="https://github.com/grip-unina/WaveRep-SyntheticVideoDetection">Code</a>
+          </div>
+          <figure>
+            <img class="pub-teaser--narrow" src="indexfiles/SynVidDet-intro.jpg" alt="Teaser: Seeing What Matters" loading="lazy" width="800" height="366">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb" src="indexfiles/ebl-intro.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Unmasking Puppeteers: Leveraging Biometric Leakage to Disarm Impersonation in AI-based Videoconferencing</h3>
+            <p class="venue">Advances in Neural Information Processing Systems, 2025</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors">Danial Samadi Vahdati, Tai Duc Nguyen, <strong>Ekta Prashnani</strong>, Koki Nagano, David Luebke, Orazio Gallo, Matthew Stamm</p>
+          <p class="abstract">This work addresses real-time puppeteering attacks in AI-based talking-head videoconferencing by detecting identity swaps directly from the transmitted pose-expression latent, without relying on reconstructed video. It introduces a pose-conditioned contrastive encoder that isolates persistent biometric cues from the latent, enabling accurate, real-time detection and strong generalization across models and out-of-distribution scenarios.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2510.03548">Paper</a>
+          </div>
+          <figure>
+            <img class="pub-teaser--narrow" src="indexfiles/ebl-intro.jpg" alt="Teaser: Unmasking Puppeteers" loading="lazy" width="800" height="623">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb" src="indexfiles/cipher-intro.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Fluctuation structure predicts genome-wide perturbation outcomes</h3>
+            <p class="venue">Research Square (preprint), 2025</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors">Benjamin Kuznets-Speck, Leon Schwartz, Hanxiao Sun, Madeline E. Melzer, Nitu Kumari, Benjamin Haley, <strong>Ekta Prashnani</strong>, Suriyanarayanan Vaikuntanathan, Yogesh Goyal</p>
+          <p class="abstract">CIPHER predicts transcriptome-wide effects of single-cell perturbations by using gene co-fluctuation patterns in unperturbed cells, showing that baseline covariance structure contains substantial information about how cells respond to the genetic perturbation. Across large-scale datasets, it accurately recovers single and double perturbation responses, outperforms standard differential expression methods, and offers an interpretable, theory-grounded framework for functional genomics.</p>
+          <div class="links">
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12363937/">Full text (PMC)</a>
+            <a href="https://github.com/GoyalLab/CIPHER">Code</a>
+          </div>
+          <figure>
+            <img class="pub-teaser--narrow pub-teaser--cipher" src="indexfiles/cipher-intro.jpg" alt="Teaser: CIPHER" loading="lazy" width="800" height="757">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb pub-thumb--right-top" src="indexfiles/avatar-fingerprinting-teaser.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Avatar Fingerprinting for Authorized Use of Synthetic Talking-Head Videos</h3>
+            <p class="venue">European Conference on Computer Vision, 2024</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors"><strong>Ekta Prashnani</strong>, Koki Nagano, Shalini De Mello, David Luebke, Orazio Gallo</p>
+          <p class="abstract">This work introduces avatar fingerprinting, a method for verifying whether a synthetic talking avatar is using someone’s identity without consent by identifying the person driving its expressions rather than the facial appearance being shown. It also presents the large-scale NVFAIR dataset for the task and demonstrates strong performance, including generalization to previously unseen avatar generation models.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2305.03713">Paper</a>
+            <a href="https://research.nvidia.com/labs/nxp/avatar-fingerprinting/">Project</a>
+            <a href="https://research.nvidia.com/labs/nxp/nvfair/">NVFAIR dataset</a>
+            <a href="https://youtu.be/mjuQqwDOyQE">Summary video</a>
+          </div>
+          <figure>
+            <img class="pub-teaser--narrow" src="indexfiles/avatar-fingerprinting-teaser.jpg" alt="Teaser: Avatar Fingerprinting" loading="lazy" width="800" height="450">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb pub-thumb--left-top" src="indexfiles/phase-forensics-teaser.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Generalizable Deepfake Detection with Phase-Based Motion Analysis</h3>
+            <p class="venue">IEEE Transactions on Image Processing, 2024</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors"><strong>Ekta Prashnani</strong>, Michael Goebel, B. S. Manjunath</p>
+          <p class="abstract">PhaseForensics detects DeepFake videos by modeling facial temporal dynamics through a phase-based motion representation, which is more robust than conventional pixel- or landmark-based temporal features. By leveraging temporal phase variations in band-pass facial components, it achieves stronger cross-dataset generalization, improved robustness to distortions and adversarial attacks, and state-of-the-art performance on challenging benchmarks like CelebDFv2.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2211.09363">Paper</a>
+          </div>
+          <figure>
+            <img src="indexfiles/phase-forensics-teaser.jpg" alt="Teaser: PhaseForensics" loading="lazy" width="800" height="450">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb pub-thumb--left-top" src="indexfiles/LOCL-intro.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>LOCL: Learning Object-Attribute Composition using Localization</h3>
+            <p class="venue">British Machine Vision Conference (BMVC), 2022</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors">Satish Kumar, ASM Iftekhar, <strong>Ekta Prashnani</strong>, B. S. Manjunath</p>
+          <p class="abstract">LOCL tackles compositional zero-shot learning in realistic, cluttered scenes by using a modular, weakly supervised approach to localize both objects and their attributes before classifying their composition. This localization-driven design substantially improves generalization to unseen object-attribute pairings and boosts performance over prior methods on challenging datasets.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2210.03780">Paper</a>
+            <a href="https://bmvc2022.mpi-inf.mpg.de/37/">BMVC proceedings</a>
+            <a href="https://github.com/satish1901/LOCL-Learning-Object-Attribute-Composition-using-Localization">Code</a>
+          </div>
+          <figure>
+            <img src="indexfiles/LOCL-intro.jpg" alt="Teaser: LOCL" loading="lazy" width="800" height="366">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb" src="indexfiles/NAT-overview.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>Noise-Aware Video Saliency Prediction</h3>
+            <p class="venue">British Machine Vision Conference, 2021</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors"><strong>Ekta Prashnani</strong>, Orazio Gallo, Joohwan Kim, Josef Spjut, Pradeep Sen, Iuri Frosio</p>
+          <p class="abstract">This work improves video saliency prediction by introducing a noise-aware training framework that accounts for frame-specific uncertainty in gaze-derived saliency maps, helping prevent overfitting to noisy supervision. It is particularly effective when observer data is limited, and is supported by a new video game saliency dataset with rich temporal structure and multiple gaze attractors per frame.</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2104.08038">Paper</a>
+            <a href="https://youtu.be/KU4KTlKbH54">Summary video</a>
+          </div>
+          <figure>
+            <img src="indexfiles/NAT-overview.jpg" alt="Overview: noise-aware video saliency" loading="lazy" width="800" height="450">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb" src="indexfiles/teaser_PieAPPv0.1.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>PieAPP: Perceptual Image-Error Assessment through Pairwise Preference</h3>
+            <p class="venue">Computer Vision and Pattern Recognition, 2018</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors"><strong>Ekta Prashnani</strong>*, Herbert (Hong) Cai*, Yasamin Mostofi, Pradeep Sen</p>
+          <p class="footnote">* Joint first authors</p>
+          <p class="abstract">PieAPP is a learning-based perceptual image quality metric that predicts visual differences in a way that closely matches human judgment, without requiring humans to assign explicit error scores. It is trained instead on large-scale pairwise human preferences between distorted images and significantly outperforms prior methods, while also generalizing well to unseen distortions.</p>
+          <div class="links">
+            <a href="http://civc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/">Project page</a>
+            <a href="https://arxiv.org/abs/1806.02067v1">Paper</a>
+            <a href="https://prashnani.github.io/indexfiles/Prashnani_CVPR_2018_PieAPP_poster.pdf">Poster</a>
+            <a href="https://github.com/prashnani/PerceptualImageError">Code</a>
+            <a href="https://github.com/prashnani/PerceptualImageError/blob/master/dataset/dataset_README.md">Dataset</a>
+          </div>
+          <figure>
+            <img src="indexfiles/teaser_PieAPPv0.1.jpg" alt="Teaser: PieAPP" loading="lazy" width="800" height="450">
+          </figure>
+        </div>
+      </details>
+
+      <details class="pub">
+        <summary class="pub-summary">
+          <div class="pub-thumb-wrap">
+            <img class="pub-thumb pub-thumb--far-right" src="indexfiles/animation-intro.jpg" width="128" height="128" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="pub-summary-main">
+            <h3>A Phase-Based Approach for Animating Images Using Video Examples</h3>
+            <p class="venue">Computer Graphics Forum, August 2016, Volume 36, Issue 6</p>
+          </div>
+          <span class="pub-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="pub-body">
+          <p class="authors"><strong>Ekta Prashnani</strong>, Maneli Noorkami, Daniel Vaquero, Pradeep Sen</p>
+          <p class="abstract">This work introduces a phase-based method for animating still images with subtle stochastic motion, such as rippling water or swaying trees, by transferring motion patterns from example videos of similar scenes. By using phase variations in a complex steerable pyramid rather than optical flow, the approach produces more robust and visually effective animations with fewer artifacts.</p>
+          <div class="links">
+            <a href="http://onlinelibrary.wiley.com/doi/10.1111/cgf.12940/abstract" target="_blank" rel="noopener">Paper</a>
+            <a href="https://youtu.be/qaItuwdh1Rw" target="_blank" rel="noopener">Video results</a>
+          </div>
+          <figure>
+            <img src="indexfiles/animation-intro.jpg" alt="Teaser: Phase-based image animation" loading="lazy" width="800" height="259">
+          </figure>
+        </div>
+      </details>
+    </section>
+
+    <!-- Legacy teaching section: uncomment block below to restore (needs capstone/mentorship JPEGs in indexfiles/).
+		<font face="Century Gothic, CenturyGothic, AppleGothic, sans-serif" style="font-size: 22pt;" id="teaching"> Teaching
+		<table style="font-size: 13pt;" border="0" width="100%">
             <tbody>
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>		    		
-					<tr><td width="100%" align="Left">Jul, 2024: <a href="https://research.nvidia.com/labs/nxp/avatar-fingerprinting/">Avatar Fingerprinting</a>, the first work on verifying authorized use of synthetic talking-head videos, is accepted for publication at ECCV (summary video <a href="https://youtu.be/mjuQqwDOyQE">link</a>).</td></tr><tr></tr><tr></tr>
-					<tr><td width="100%" align="Left">Jun, 2024: PhaseForensics (a phase-based deepfake detector) is accepted for publication at the Transactions on Image Processing: stay tuned for updates!</td></tr><tr></tr><tr></tr>
-					<tr><td width="100%" align="Left">Jan, 2024: <a href="https://scholar.google.com/citations?user=jJz3mXcAAAAJ&hl=en">Leonard Salewski</a> started his internship with me: an exciting start to 2024!</td></tr><tr></tr><tr></tr>
-					<tr><td width="100%" align="Left">Sep, 2023: Our work on Avatar Fingerprinting for verifying the authorized use of synthetic talking-head videos is now available on <a href="https://arxiv.org/abs/2305.03713">arXiv</a>.</td></tr><tr></tr><tr></tr>
-					<tr><td width="100%" align="Left">Nov, 2022: Our work on PhaseForensics: A generalizable deepfake detector for phase-based motion analysis is now available on <a href="https://arxiv.org/abs/2211.09363">arXiv</a>.</td></tr><tr></tr><tr></tr>					
-					<tr><td width="100%" align="Left">Apr, 2022: Started as a Research Scientist in the Human Performance and Experience team at NVIDIA.</td></tr><tr></tr><tr></tr>
-		    		<tr><td width="100%" align="Left">Feb, 2022: Successfully defended my thesis "Data-driven Methods for Evaluating the Perceptual Quality and Authenticity of Visual Media".</td></tr><tr></tr><tr></tr>
-		    		<tr><td width="100%" align="Left">Oct, 2021: Participated in ICCV 2021 Doctoral Consortium.</td></tr><tr></tr><tr></tr>
-		    		<tr><td width="100%" align="Left">Jun, 2021: ECE Dissertation Fellowship by the ECE department at UCSB.</td></tr><tr></tr><tr></tr>
-		    		<!-- <tr><td width="100%" align="Left">Apr, 2021: Our work on noise-aware training strategies for visual saliency prediction (accepted at BMVC'21) is now available on <a href="https://arxiv.org/abs/2104.08038" style="color:528B8B" target="_blank">arXiv</a>.</td></tr><tr></tr><tr></tr>
-		    		<tr><td width="100%" align="Left">Jan, 2021: The PieAPP dataset is now available publicly! See <a href="https://github.com/prashnani/PerceptualImageError/blob/master/dataset/dataset_README.md" style="color:528B8B" target="_blank">
-					here</a> for details. </td></tr><tr></tr><tr></tr>
-					<tr><td width="100%" align="Left">Jun, 2018: Our CVPR2018 paper about a new <a href="https://arxiv.org/abs/1806.02067" style="color:528B8B" target="_blank">
-					perceptual image-error metric (PieAPPv0.1)</a> 
-					and the associated <a href="https://github.com/prashnani/PerceptualImageError" style="color:528B8B" target="_blank">source code and trained model</a> 
-					is now online!</td></tr><tr></tr><tr></tr> -->
-			</tbody>
-		</table> 
-        <hr size="1" align="left" color="c3c3c3">   		
-		
-		<font face= "Century Gothic, CenturyGothic, AppleGothic, sans-serif" style="font-size: 22pt;"> Publications
-		<table style="font-size: 13pt;" border="0" width="100%" font size="3">
-            <tbody>
-
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr><td width="100%" align="Left">Ekta Prashnani, Koki Nagano, Shalini De Mello, David Leubke, Orazio Gallo, "Avatar Fingerprinting for Authorized Use of Synthetic Talking-Head Videos" <em> European Conference on Computer Vision, 2024.</em> <br> <center>
-					[<a href="https://arxiv.org/abs/2305.03713" style="color:528B8B">paper</a>]														
-					[<a href="https://research.nvidia.com/labs/nxp/avatar-fingerprinting/">project page</a>]
-					[<a href="https://research.nvidia.com/labs/nxp/nvfair/">project page</a>]
-					[<a href="https://research.nvidia.com/labs/nxp/avatar-fingerprinting/">summary video</a>]</center>
-				<p><center>
-				<img width="60%" src="indexfiles/avatar-fingerprinting-teaser.png" border="0" ></center>
-				</p>				
-				</td></tr>
-
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr><td width="30%" align="Left">Ekta Prashnani, Michael Goebel, B. S. Manjunath, "Generalizable Deepfake Detection with Phase-Based Motion Analysis" <em> IEEE Transactions on Image Processing, 2024.</em> <br> <center>
-					[<a href="https://arxiv.org/abs/2211.09363" style="color:528B8B">paper</a>]														
-					[source code (Coming soon!)]					
-					[summary video (Coming soon!)]</center>
-				<p><center>
-				<img width="100%" src="indexfiles/phase-forensics-teaser.png" border="0" ></center>
-				</p>				
-				</td></tr>
-
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr><td width="100%" align="Left">Ekta Prashnani, Orazio Gallo, Joohwan Kim, Josef Spjut, Pradeep Sen, Iuri Frosio, "Noise-Aware Video Saliency Prediction," <em> British Machine Vision Conference, 2021.</em> <br> <center>
-					[<a href="https://arxiv.org/abs/2104.08038" style="color:528B8B">paper</a>]														
-					[<a href="https://github.com/NVlabs/NAT-saliency" style="color:528B8B">source code</a>]
-					[<a href="https://github.com/NVlabs/NAT-saliency" style="color:528B8B">dataset</a>]					
-					[<a href="https://youtu.be/KU4KTlKbH54" style="color:528B8B">summary video</a>]</center>
-				<p><center>
-				<img width="100%" src="indexfiles/NAT-overview.png" border="0" ></center>
-				</p>
-				
-				</td></tr>
-		    
-		    <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr><td width="100%" align="Left">Ekta Prashnani*, Herbert (Hong) Cai*, Yasamin Mostofi and Pradeep Sen, "PieAPP: Perceptual Image-Error 
-					Assessment through Pairwise Preference," <em> Computer Vision and Pattern Recognition, 2018.</em> <br> <center>
-					[<a href="http://civc.ucsb.edu/graphics/Papers/CVPR2018_PieAPP/" style="color:528B8B">project webpage</a>] 
-					[<a href="https://arxiv.org/abs/1806.02067v1" style="color:528B8B">paper</a>]														
-					[<a href="https://openaccess.thecvf.com/content_cvpr_2018/Supplemental/3483-supp.pdf" style="color:528B8B">supplementary</a>]					
-					[<a href="https://prashnani.github.io/indexfiles/Prashnani_CVPR_2018_PieAPP_poster.pdf" style="color:528B8B">poster</a>]					
-					[<a href="https://github.com/prashnani/PerceptualImageError" style="color:528B8B">source code</a>]
-					[<a href="https://github.com/prashnani/PerceptualImageError/blob/master/dataset/dataset_README.md" style="color:528B8B">dataset</a>]					
-					[<a href="https://www.ece.ucsb.edu/~ekta/projects/PieAPPv0.1/PieAPPv0.1_win64_exe.zip" style="color:528B8B">.exe</a>]</center>
-				<p><center>
-				<img width="100%" src="indexfiles/teaser_PieAPPv0.1.png" border="0" ></center>
-				</p>
-				
-				</td></tr>
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<tr><td width="100%" align="Left">Ekta Prashnani, Maneli Noorkami, Daniel Vaquero and Pradeep Sen, "A Phase-Based Approach for Animating Images Using Video Examples," <em> Computer Graphics Forum, August 2016, Volume 36,
-Issue 6.</em> 
-				<center>[<a href="http://onlinelibrary.wiley.com/doi/10.1111/cgf.12940/abstract"  style="color:528B8B" target="_blank">paper</a>] 
-				[<a href="https://youtu.be/qaItuwdh1Rw"  style="color:528B8B" target="_blank">video results</a>] </center>
-				</td></tr>
-				<tr></tr>
-				<tr></tr>
-				<tr><td width="100%" align="Left"><small>*joint first authors</td></tr>
-			</tbody>
-		</table> 
-        <!-- <hr size="1" align="left" color="c3c3c3">     -->
-
-		<!-- <font face= "Century Gothic, CenturyGothic, AppleGothic, sans-serif" style="font-size: 22pt;" id="teaching"> Teaching 
-		<table style="font-size: 13pt;" border="0" width="100%" font size="3">
-            <tbody>
-				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<td width="40%" align="center">                    
-                    <img width="80%" src="indexfiles/capstone2019.jpg" border="0" >
+				<td width="40%" align="center">
+                    <img width="80%" src="indexfiles/capstone2019.jpg" border="0" alt="">
                 </td>
-				<td align="Left">Technical Mentorship for EE Capstone (2018-2019)<br>
-				<br><font style="font-size: 11pt;">Provided technical mentorship to seniors on their 
+				<td align="left">Technical Mentorship for EE Capstone (2018-2019)<br>
+				<br><font style="font-size: 11pt;">Provided technical mentorship to seniors on their
 					EE Capstone projects (total five capstone projects).
-<br>I worked very closely with the capstone team (left to right in the top picture: Benjamin Hirt, Erik Rosten, Shan-Wei Sun) working on  
-<a href="https://capstone.engineering.ucsb.edu/projects/arthrex-autoscribe"  style="color:528B8B" target="_blank">the design and deployment of machine-learning-based 
-medical image recognition algorithms for arthroscopic images</a> (sponsored by Arthrex). The team used an Nvidia Jetson TX2 interfaced with the live camera feed from 
-an Arthrex surgical drawer, to deploy the trained deep-learning-based models. Check out a brief live demo 
-<a href="https://www.youtube.com/watch?time_continue=1&v=U-643GFKFdY&feature=emb_logo"  style="color:528B8B" target="_blank">here</a> (starting at 25s). </font></td></tr>
+<br>I worked very closely with the capstone team (left to right in the top picture: Benjamin Hirt, Erik Rosten, Shan-Wei Sun) working on
+<a href="https://capstone.engineering.ucsb.edu/projects/arthrex-autoscribe" target="_blank">the design and deployment of machine-learning-based
+medical image recognition algorithms for arthroscopic images</a> (sponsored by Arthrex). The team used an Nvidia Jetson TX2 interfaced with the live camera feed from
+an Arthrex surgical drawer, to deploy the trained deep-learning-based models. Check out a brief live demo
+<a href="https://www.youtube.com/watch?time_continue=1&amp;v=U-643GFKFdY&amp;feature=emb_logo" target="_blank">here</a> (starting at 25s). </font></td></tr>
 			</tbody>
 		</table>
-		<br>			
-		<table style="font-size: 13pt;" border="0" width="100%" font size="3">
+		<br>
+		<table style="font-size: 13pt;" border="0" width="100%">
             <tbody>
 				<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<td width="40%" align="center">                    
-                    <img width="80%" src="indexfiles/capstone_2017_2018.jpg" border="0" >
+				<td width="40%" align="center">
+                    <img width="80%" src="indexfiles/capstone_2017_2018.jpg" border="0" alt="">
                 </td>
-				<td align="Left">Technical Mentorship for EE Capstone (2017-2018)<br>
-				<br><font style="font-size: 11pt;">Provided technical mentorship to seniors on their 
+				<td align="left">Technical Mentorship for EE Capstone (2017-2018)<br>
+				<br><font style="font-size: 11pt;">Provided technical mentorship to seniors on their
 					EE Capstone projects (total five capstone projects).
-<br>I worked very closely with the capstone team working on  
-<a href="https://capstone.engineering.ucsb.edu/projects/arthrex-arthroscout"  style="color:528B8B" target="_blank">medical image recognition 
-for arthroscopic images</a> (sponsored by Arthrex). The team (left to right: Jonathan Huynh, 
-Phanitta Chomsinsap, Jacob Kurtz and Alae Amara) was selected to present their 
-work at the <a href="https://capstone.engineering.ucsb.edu/events/edx2018"  style="color:528B8B" target="_blank">Engineering Design Expo, 2018</a>, at UCSB.</font></td></tr>
+<br>I worked very closely with the capstone team working on
+<a href="https://capstone.engineering.ucsb.edu/projects/arthrex-arthroscout" target="_blank">medical image recognition
+for arthroscopic images</a> (sponsored by Arthrex). The team (left to right: Jonathan Huynh,
+Phanitta Chomsinsap, Jacob Kurtz and Alae Amara) was selected to present their
+work at the <a href="https://capstone.engineering.ucsb.edu/events/edx2018" target="_blank">Engineering Design Expo, 2018</a>, at UCSB.</font></td></tr>
 			</tbody>
 		</table>
 		<br>
-		<table style="font-size: 13pt;" border="0" width="100%" font size="3">
+		<table style="font-size: 13pt;" border="0" width="100%">
             <tbody><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<td width="40%" align="center">                    
-                    <img width="90%" src="indexfiles/summer_mentorship_2017.png" border="0" >
+				<td width="40%" align="center">
+                    <img width="90%" src="indexfiles/summer_mentorship_2017.jpg" border="0" alt="">
                 </td>
-				<td align="Left">Research Mentor for High School Students (July 2017)<br> 
-				<br><font style="font-size: 11pt;"> In the Summer of 2017, I had the opportunity to mentor 
+				<td align="left">Research Mentor for High School Students (July 2017)<br>
+				<br><font style="font-size: 11pt;"> In the Summer of 2017, I had the opportunity to mentor
 				four exceptional high school students (left to right in first picture: Sohini Kar, Jungwoo Park, Joshua Doolan, James Wang)
-				as a part of the <a href="http://www.summer.ucsb.edu/pre-college/research-mentorship-program-rmp"  style="color:528B8B" target="_blank">
-				Summer Research Mentorship Program at UCSB</a>. 
-				<br>I spent the first few weeks of the program teaching relevant concepts of computer vision and 
-				machine learning to these students (they followed along easily - the age for brilliance keeps getting younger!). 
-				The students spent the latter half of the program working on the research tasks I designed for them 
-				in applying deep learning to object detection (for Sohini and Jungwoo) 
+				as a part of the <a href="http://www.summer.ucsb.edu/pre-college/research-mentorship-program-rmp" target="_blank">
+				Summer Research Mentorship Program at UCSB</a>.
+				<br>I spent the first few weeks of the program teaching relevant concepts of computer vision and
+				machine learning to these students (they followed along easily - the age for brilliance keeps getting younger!).
+				The students spent the latter half of the program working on the research tasks I designed for them
+				in applying deep learning to object detection (for Sohini and Jungwoo)
 				and image restoration (for Joshua and James).</font></td></tr>
 			</tbody>
 		</table>
-		<br>		
-		<table style="font-size: 13pt;" border="0" width="100%" font size="3">
+		<br>
+		<table style="font-size: 13pt;" border="0" width="100%">
             <tbody><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-				<td width="40%" align="center">                    
-                    <img width="80%" src="indexfiles/capstone_2016_2017.jpg" border="0" >
+				<td width="40%" align="center">
+                    <img width="80%" src="indexfiles/capstone_2016_2017.jpg" border="0" alt="">
                 </td>
-				<td align="Left">Technical Mentorship for EE Capstone (2016-2017)<br> 
+				<td align="left">Technical Mentorship for EE Capstone (2016-2017)<br>
 				<br><font style="font-size: 11pt;">Provided technical mentorship to seniors on their EE Capstone projects (total six capstone projects).
-I worked very closely with the capstone team working on 
-<a href="https://capstone.engineering.ucsb.edu/projects/flir-pxtal	"  style="color:528B8B" target="_blank">deep-learning-based image super-resolution</a> (sponsored by Flir). 
-<br>The team (left to right: Julian Castro, Connor Northend, Jose Jimenez) ended 
+I worked very closely with the capstone team working on
+<a href="https://capstone.engineering.ucsb.edu/projects/flir-pxtal" target="_blank">deep-learning-based image super-resolution</a> (sponsored by Flir).
+<br>The team (left to right: Julian Castro, Connor Northend, Jose Jimenez) ended
 up winning the award for the Best Technical Capstone Project!</font></td></tr>
 			</tbody>
 		</table>
 		<br>
-		 -->
-		
-		<hr size="1" align="left" color="c3c3c3"><center>
-		<font style="font-size: 11pt;">
-		I can also be found on: <a href='https://www.linkedin.com/in/ektaprashnani/' style="color:528B8B" target="_blank">[LinkedIn]</a>
-		<a href='https://github.com/prashnani' style="color:528B8B" target="_blank">[Github]</a>
-		<a href='https://scholar.google.com/citations?user=na-Ba1EAAAAJ&hl=en' style="color:528B8B" target="_blank">[Google Scholar]</a>
-		<a href='https://www.flickr.com/photos/133729196@N03/' style="color:528B8B" target="_blank">[Flickr]</a>
-		<a href='https://twitter.com/ekta_prashnani' style="color:528B8B" target="_blank">[Twitter]</a>
-		</font></center>
-		<hr size="1" align="left" color="c3c3c3">
-		
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120416137-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+		</font>
+    -->
 
-  gtag('config', 'UA-120416137-1');
-</script>
+    <footer class="site-footer">
+      <nav aria-label="Social links">
+        <a href="https://www.linkedin.com/in/ektaprashnani/" target="_blank" rel="noopener">LinkedIn</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://scholar.google.com/citations?user=na-Ba1EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <span aria-hidden="true">·</span>
+        <a href="indexfiles/Ekta_Prashnani_Resume_March2026.pdf" target="_blank" rel="noopener">CV</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://www.flickr.com/photos/133729196@N03/" target="_blank" rel="noopener">Flickr</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://twitter.com/ekta_prashnani" target="_blank" rel="noopener">Twitter</a>
+      </nav>
+      <p class="copyright">&copy; 2026 Ekta Prashnani. All rights reserved.</p>
+      <p class="credit">Template credit: <a href="https://prashnani.github.io">prashnani.github.io</a></p>
+    </footer>
+  </div>
 
-            
-</font></td></tr></tbody></table>
-<!-- <iframe frameborder="0" scrolling="no" style="border: 0px; display: none; background-color: transparent;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="null" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:false,&quot;ss&quot;:true}" style="display: none;"></div> -->
+  <script>
+    if ("serviceWorker" in navigator && location.protocol === "https:") {
+      navigator.serviceWorker.register("/sw.js").catch(function () {});
+    }
 
-<!-- UNCOMMENT THE FOLLOWING TO GIVE CREDIT: -->
-<!--  <p><font style="font-size: 11pt;" color="c1c1c1"> <center><a href='https://prashnani.github.io' style="color:c3c3c3">
-website template credit: https://prashnani.github.io</a></center></font></p>  -->
-</body></html>
+    (function () {
+      var wrap = document.querySelector(".news-scroll-wrap");
+      var scrollEl = wrap && wrap.querySelector(".news-scroll");
+      var toggle = document.getElementById("news-scroll-toggle");
+      if (!wrap || !scrollEl || !toggle) return;
 
+      function updateNewsScrollToggle() {
+        var expanded = wrap.classList.contains("news-scroll-wrap--expanded");
+
+        if (expanded) {
+          toggle.hidden = false;
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Collapse news list");
+          scrollEl.classList.remove("news-scroll--clipped");
+        } else {
+          var clipped = scrollEl.scrollHeight > scrollEl.clientHeight + 1;
+          toggle.hidden = !clipped;
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute(
+            "aria-label",
+            "Expand news list to show all entries"
+          );
+          scrollEl.classList.toggle("news-scroll--clipped", clipped);
+        }
+      }
+
+      toggle.addEventListener("click", function () {
+        wrap.classList.toggle("news-scroll-wrap--expanded");
+        requestAnimationFrame(function () {
+          requestAnimationFrame(updateNewsScrollToggle);
+        });
+      });
+
+      window.addEventListener("resize", updateNewsScrollToggle);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          requestAnimationFrame(updateNewsScrollToggle);
+        });
+      } else {
+        requestAnimationFrame(updateNewsScrollToggle);
+      }
+    })();
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120416137-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "UA-120416137-1");
+  </script>
+</body>
+</html>

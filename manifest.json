@@ -1,0 +1,18 @@
+{
+  "name": "Ekta Prashnani",
+  "short_name": "Ekta Prashnani",
+  "description": "Senior Research Scientist — NVIDIA Research",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#f7f7f8",
+  "icons": [
+    {
+      "src": "indexfiles/profile.jpg",
+      "sizes": "850x819",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
